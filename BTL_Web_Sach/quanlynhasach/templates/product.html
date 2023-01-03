@@ -1,0 +1,65 @@
+{% extends 'layout/base.html' %}
+
+{% block title %}Chi tiết sản phẩm{% endblock %}
+
+{% block content %}
+<h1 class="text-center text-info">{{product.name}}</h1>
+<div class="container">
+    <div class="row flex">
+        <div class="col-md-3 col-xs-12">
+            <img class="card-img-top" src="{{ url_for('static', filename=product.image) }}" alt="{{ product.name}}" />
+        </div>
+        <p> </p>
+        <div class="col-md-9 col-xs-12">
+            <h2>{{ product.name }}</h2>
+            <p>{{ product.description }}</p>
+            <h4>{{ "{:,.0f}".format(product.price) }} VNĐ</h4>
+        </div>
+    </div><hr>
+    {% if current_user.is_authenticated %}
+        <div>
+            <div class="form-group">
+                <textarea class="form-control" id="commentId" name="content" placeholder="Nhập nội dung bình luận..." ></textarea>
+            </div>
+            <button class="btn btn-info" onclick="addComment({{product.id}})">Thêm bình luận</button>
+        </div><br>
+        {% if cmt %}
+            <p><i>Tất cả bình luận({{cmt}})</i></p>
+        {% endif %}
+    {% else %}
+        <a href="{{ url_for('user_login', next=url_for('product_detail', product_id=product.id)) }}" class="alert alert-warning">Đăng nhập để bình luận</a><br><br>
+    {% endif %}
+    {% if pages > 1 %}
+        <ul class="pagination">
+            {% for id in range(1, pages+1) %}
+                <li class="page-item"><a class="page-link" href="{{url_for('product_detail', product_id=product.id, page=id)}}">{{id}}</a></li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+    <div id="comments">
+        {% for c in comments %}
+        <div class="row">
+            <div class="col-md-1 col-xs-2">
+                {% if c.user.avatar and c.user.avatar.startswith('https') %}
+                    <img class="img-fluid rounded-circle" src="{{c.user.avatar}}" alt="avatar" />
+                {% else %}
+                    <img class="img-fluid rounded-circle" src="{{url_for('static', filename='images/avatar-mac-dinh-1.png')}}" alt="avatar" />
+                {% endif %}
+            </div>
+            <div class="col-md-11 col-xs-10">
+                <p>{{c.content}}</p>
+                <p><em class="my-date">{{c.created_date}}</em></p>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    <script>
+        window.onload = function() {
+            loadComment({{product.id}})
+            let d = document.getElementsByClassName('my-date')
+            for(let i = 0; i < d.length; i++)
+                d[i].innerText = moment(d[i].innerText).locale('vi').fromNow()
+        }
+    </script>
+</div>
+{% endblock %}

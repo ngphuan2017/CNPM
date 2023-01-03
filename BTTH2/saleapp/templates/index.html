@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Trang chủ</title>
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet" />
+</head>
+<body>
+    <h1 class="all">Chào mừng bạn đến với website bán hàng online!!!</h1>
+    <ul>
+        <li><a href="{{ url_for('list') }}">Tất cả sản phẩm</a></li>
+        {% for c in category %}
+        <li><a href="{{ url_for('list', category_id=c.id) }}">{{c.name}}</a></li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

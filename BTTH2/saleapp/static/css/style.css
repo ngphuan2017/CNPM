@@ -1,0 +1,24 @@
+* {
+    font-family: Tahoma;
+}
+
+body {
+    background-color: lightblue;
+    color: blue
+}
+div.container {
+    width: 80%;
+    margin: 0 auto;
+}
+
+h1.all {
+    text-align: center;
+    color: green;
+}
+table.products {
+    border-collapse: collapse;
+    width: 100%;
+}
+.flex {
+    display: flex;
+}

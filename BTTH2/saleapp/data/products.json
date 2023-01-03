@@ -1,0 +1,46 @@
+[{
+"id": 1,
+"name": "Iphone 5 plus",
+"description": "Apple, 32GB, RAM: 3GB",
+"price": 4500000,
+"image": "image/ip5plus.jfif",
+"category_id": 1
+}, {
+"id": 2,
+"name": "Iphone 6 Plus",
+"description": "Apple, 128GB, RAM: 6GB",
+"price": 6500000,
+"image": "image/ip6plus.jfif",
+"category_id": 1
+}, {
+"id": 3,
+"name": "Tivi Samsung 40 inc",
+"description": "Samsung, 64GB, RAML: 6GB",
+"price": 8000000,
+"image": "image/tivi-samsung.jfif",
+"category_id": 2
+},
+{
+"id": 4,
+"name": "Tu dong Panasonic",
+"description": "The tich 100L",
+"price": 3500000,
+"image": "image/tudong-panasonic.jfif",
+"category_id": 3
+},
+{
+"id": 5,
+"name": "May giat LG",
+"description": "6 Kg",
+"price": 4500000,
+"image": "image/maygiat-lg.jfif",
+"category_id": 3
+},
+{
+"id": 6,
+"name": "Tivi Sony 48 inc",
+"description": "Sony, 32GB, RAM: 3GB",
+"price": 10000000,
+"image": "image/tivi-sony.jfif",
+"category_id": 2
+}]
